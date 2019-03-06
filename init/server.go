@@ -7,6 +7,9 @@ import (
 	"github.com/tanmaydatta/boggle/internal/api"
 	"net/http"
 	"time"
+	"github.com/betacraft/yaag/yaag"
+	"github.com/betacraft/yaag/middleware"
+
 )
 
 type Server struct {
@@ -20,6 +23,12 @@ func (s Server) SetupComponents() {
 }
 
 func New() *Server {
+	yaag.Init(&yaag.Config{
+		On: true,
+		DocTitle: "Boggle Api",
+		DocPath: "apidoc.html",
+		BaseUrls: map[string]string{"local": "localhost:8080", "heroku": "https://protected-ravine-41774.herokuapp.com"},
+	})
 	router := mux.NewRouter()
 	//router.Use(middleware.AddAuthHeaderMiddleware)
 	host := viper.GetString("SERVER_HOST")
@@ -32,7 +41,7 @@ func New() *Server {
 
 func (s Server) ServeHTTP() {
 	srv := &http.Server{
-		Handler:      s.Router,
+		Handler:      middleware.Handle(s.Router),
 		Addr:         s.Address,
 		WriteTimeout: time.Second * 10,
 		ReadTimeout:  time.Second * 10,

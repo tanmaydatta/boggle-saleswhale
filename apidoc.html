@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title> API Documentation </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .hidden {
+            display:none;
+        }
+        pre {
+            outline: 1px solid #ccc;
+            padding: 5px; margin: 5px;
+        }
+
+        .string { color: green; }
+        .number { color: darkorange; }
+        .boolean { color: blue; }
+        .null { color: magenta; }
+        .key { color: red; }
+
+    </style>
+    <style type="text/css">
+        pre.prettyprint {
+            border: 1px solid #ccc;
+            margin-bottom: 0;
+            padding: 9.5px;
+        }
+    </style>
+    <script>
+         
+        function syntaxHighlight(json) {
+            json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+                var cls = 'number';
+                if (/^"/.test(match)) {
+                    if (/:$/.test(match)) {
+                        cls = 'key';
+                    } else {
+                        cls = 'string';
+                    }
+                } else if (/true|false/.test(match)) {
+                    cls = 'boolean';
+                } else if (/null/.test(match)) {
+                    cls = 'null';
+                }
+                return '<span class="' + cls + '">' + match + '</span>';
+            });
+        }
+
+        function spaceJson(json){
+            var validJson = JSON.parse(json);
+            return JSON.stringify(validJson, undefined, 4);
+        }
+    </script>
+
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Boggle Api</a>
+            <p class="navbar-text">Developed by Gophers at <a href="http://betacraft.co">Betacraft</a></p>
+        </div>
+            
+        
+    </div>
+    
+</nav>
+<div class="container-fluid" style="margin-top: 70px;margin-bottom: 20px;">
+    <div class="container-fluid">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+              <div class="panel-heading">Base Urls</div>
+              <div class="panel-body">
+                
+                    <p>heroku : <strong>https://protected-ravine-41774.herokuapp.com</strong></p>
+                
+                    <p>local : <strong>localhost:8080</strong></p>
+                
+              </div>
+            </div>    
+        <ul class="nav nav-pills nav-stacked" role="tablist">
+            
+                <li role="presentation"><a href="#0top" role="tab" data-toggle="tab">POST : /api/users/new/start</a></li>
+            
+                <li role="presentation"><a href="#1top" role="tab" data-toggle="tab">GET : /api/users/bi020lv6pdi2bl28edug</a></li>
+            
+                <li role="presentation"><a href="#2top" role="tab" data-toggle="tab">POST : /api/users/bi020lv6pdi2bl28edug/start</a></li>
+            
+                <li role="presentation"><a href="#3top" role="tab" data-toggle="tab">POST : /api/users/bi020lv6pdi2bl28edug/move</a></li>
+            
+                <li role="presentation"><a href="#4top" role="tab" data-toggle="tab">GET : /api/game/bi0228v6pdi2bl28ee10</a></li>
+            
+                <li role="presentation"><a href="#5top" role="tab" data-toggle="tab">GET : /api/game/bi0228v6pdi2bl28ee10/score</a></li>
+            
+                <li role="presentation"><a href="#6top" role="tab" data-toggle="tab">POST : /api/users/bi0228v6pdi2bl28ee1g/move</a></li>
+            
+                <li role="presentation"><a href="#7top" role="tab" data-toggle="tab">POST : /api/users/bi023l76pdi2bl28ee2g/move</a></li>
+            
+                <li role="presentation"><a href="#8top" role="tab" data-toggle="tab">GET : /api/game/bi023l76pdi2bl28ee20</a></li>
+            
+        <ul>
+    </div>
+    <div class="col-md-8 tab-content">
+        
+        <div id="0top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  d7e7f3e3-a46a-4886-8c30-66e95e1ebc08</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-0" class="prettyprint">{
+	&#34;name&#34;: &#34;tanmay&#34;,
+	&#34;duration&#34;: 10,
+	&#34;size&#34;: 4
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" d7e7f3e3-a46a-4886-8c30-66e95e1ebc08\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"name\": \"tanmay\",\n\t\"duration\": 10,\n\t\"size\": 4\n}");
+                            document.getElementById('request-body-0-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-0">{&#34;userid&#34;:&#34;bi020lv6pdi2bl28edug&#34;,&#34;gameid&#34;:&#34;bi020lv6pdi2bl28edu0&#34;,&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userid\":\"bi020lv6pdi2bl28edug\",\"gameid\":\"bi020lv6pdi2bl28edu0\",\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-0-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  7ef840e2-1682-4864-989c-a677c6270e09</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-1" class="prettyprint">{
+	&#34;name&#34;: &#34;tanmay&#34;,
+    &#34;duration&#34;: 100
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 7ef840e2-1682-4864-989c-a677c6270e09\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"name\": \"tanmay\",\n    \"duration\": 100\n}");
+                            document.getElementById('request-body-0-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-1">{&#34;userid&#34;:&#34;bi0228v6pdi2bl28ee1g&#34;,&#34;gameid&#34;:&#34;bi0228v6pdi2bl28ee10&#34;,&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userid\":\"bi0228v6pdi2bl28ee1g\",\"gameid\":\"bi0228v6pdi2bl28ee10\",\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-0-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  1c685e10-73d3-48ef-9bac-b6fb55440fae</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-0-2" class="prettyprint">{
+	&#34;name&#34;: &#34;tanmay&#34;,
+	&#34;duration&#34;: 1000
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 1c685e10-73d3-48ef-9bac-b6fb55440fae\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"name\": \"tanmay\",\n\t\"duration\": 1000\n}");
+                            document.getElementById('request-body-0-2').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-0-2">{&#34;userid&#34;:&#34;bi023l76pdi2bl28ee2g&#34;,&#34;gameid&#34;:&#34;bi023l76pdi2bl28ee20&#34;,&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userid\":\"bi023l76pdi2bl28ee2g\",\"gameid\":\"bi023l76pdi2bl28ee20\",\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-0-2').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="1top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  1893b63f-96b8-4288-8c51-92c83a9ebbdd</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-1-0">{&#34;id&#34;:&#34;bi020lv6pdi2bl28edug&#34;,&#34;name&#34;:&#34;tanmay&#34;,&#34;games&#34;:[&#34;bi020lv6pdi2bl28edu0&#34;]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"id\":\"bi020lv6pdi2bl28edug\",\"name\":\"tanmay\",\"games\":[\"bi020lv6pdi2bl28edu0\"]}");
+                            document.getElementById('response-body-1-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="2top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  84aeeb0f-4ab0-432a-97aa-37ae40d9f931</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-2-0" class="prettyprint">{
+	&#34;duration&#34;: 10,
+	&#34;size&#34;: 4
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 84aeeb0f-4ab0-432a-97aa-37ae40d9f931\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"duration\": 10,\n\t\"size\": 4\n}");
+                            document.getElementById('request-body-2-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-2-0">{&#34;userid&#34;:&#34;bi020lv6pdi2bl28edug&#34;,&#34;gameid&#34;:&#34;bi021476pdi2bl28edv0&#34;,&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userid\":\"bi020lv6pdi2bl28edug\",\"gameid\":\"bi021476pdi2bl28edv0\",\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-2-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  3df450db-5737-4595-9ef3-e11202b888a3</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-2-1" class="prettyprint">{
+	&#34;duration&#34;: 100,
+	&#34;size&#34;: 4
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 3df450db-5737-4595-9ef3-e11202b888a3\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"duration\": 100,\n\t\"size\": 4\n}");
+                            document.getElementById('request-body-2-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-2-1">{&#34;userid&#34;:&#34;bi020lv6pdi2bl28edug&#34;,&#34;gameid&#34;:&#34;bi021af6pdi2bl28edvg&#34;,&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"userid\":\"bi020lv6pdi2bl28edug\",\"gameid\":\"bi021af6pdi2bl28edvg\",\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-2-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="3top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  60b658bb-b306-43d7-9fab-9252879b4599</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-3-0" class="prettyprint">{
+	&#34;word&#34;: &#34;tanmay&#34;
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 60b658bb-b306-43d7-9fab-9252879b4599\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"word\": \"tanmay\"\n}");
+                            document.getElementById('request-body-3-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-3-0">{&#34;correct&#34;:false,&#34;score&#34;:0}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"correct\":false,\"score\":0}");
+                            document.getElementById('response-body-3-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  fb62ce30-261a-4308-978c-546880be6d3b</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-3-1" class="prettyprint">{
+	&#34;word&#34;: &#34;aah&#34;
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" fb62ce30-261a-4308-978c-546880be6d3b\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"word\": \"aah\"\n}");
+                            document.getElementById('request-body-3-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-3-1">{&#34;correct&#34;:true,&#34;score&#34;:1}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"correct\":true,\"score\":1}");
+                            document.getElementById('response-body-3-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="4top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  37687869-a03f-42a6-bee4-6e4720f76293</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-4-0">{&#34;id&#34;:&#34;bi0228v6pdi2bl28ee10&#34;,&#34;startedAtInSec&#34;:1551900963,&#34;durationInSec&#34;:100,&#34;words&#34;:[],&#34;Attempts&#34;:[],&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"id\":\"bi0228v6pdi2bl28ee10\",\"startedAtInSec\":1551900963,\"durationInSec\":100,\"words\":[],\"Attempts\":[],\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-4-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  36be7847-eae6-4257-8533-d0da1a13689f</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-4-1">{&#34;id&#34;:&#34;bi0228v6pdi2bl28ee10&#34;,&#34;startedAtInSec&#34;:1551900963,&#34;durationInSec&#34;:100,&#34;words&#34;:[&#34;aah&#34;],&#34;Attempts&#34;:[],&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"id\":\"bi0228v6pdi2bl28ee10\",\"startedAtInSec\":1551900963,\"durationInSec\":100,\"words\":[\"aah\"],\"Attempts\":[],\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-4-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="5top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  2a892416-87bc-4565-81d7-244b1abcacd3</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-5-0">{&#34;score&#34;:0}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"score\":0}");
+                            document.getElementById('response-body-5-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="6top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  8e079fad-e958-417a-88a6-e4d99aa62700</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-6-0" class="prettyprint">{
+	&#34;word&#34;: &#34;tanmay&#34;
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 8e079fad-e958-417a-88a6-e4d99aa62700\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"word\": \"tanmay\"\n}");
+                            document.getElementById('request-body-6-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-6-0">{&#34;correct&#34;:false,&#34;score&#34;:0}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"correct\":false,\"score\":0}");
+                            document.getElementById('response-body-6-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  0237aca3-ca4d-4fdd-a79f-320b41f63f4f</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-6-1" class="prettyprint">{
+	&#34;word&#34;: &#34;aah&#34;
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" 0237aca3-ca4d-4fdd-a79f-320b41f63f4f\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"word\": \"aah\"\n}");
+                            document.getElementById('request-body-6-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-6-1">{&#34;correct&#34;:true,&#34;score&#34;:1}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"correct\":true,\"score\":1}");
+                            document.getElementById('response-body-6-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="7top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  a7e24314-0069-4b65-8d84-5829d9978e62</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-7-0" class="prettyprint">{
+	&#34;word&#34;: &#34;tanmay&#34;
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" a7e24314-0069-4b65-8d84-5829d9978e62\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"word\": \"tanmay\"\n}");
+                            document.getElementById('request-body-7-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-7-0">{&#34;correct&#34;:false,&#34;score&#34;:0}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"correct\":false,\"score\":0}");
+                            document.getElementById('response-body-7-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  a9e0d030-dd81-4e5f-b47b-85e33b717a14</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p> <H4> Request Body </H4> </p>
+                <pre id="request-body-7-1" class="prettyprint">{
+	&#34;word&#34;: &#34;aah&#34;
+}</pre>
+                <script>
+                     
+                    var requestHeader ={"Content-Type":" application/json\r","Postman-Token":" a9e0d030-dd81-4e5f-b47b-85e33b717a14\r"};
+
+                    if (requestHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\n\t\"word\": \"aah\"\n}");
+                            document.getElementById('request-body-7-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-7-1">{&#34;correct&#34;:true,&#34;score&#34;:1}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"correct\":true,\"score\":1}");
+                            document.getElementById('response-body-7-1').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+        <div id="8top"  role="tabpanel" class="tab-pane col-md-10">
+            
+                
+                <p> <H4> Request Headers </H4> </p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td>  application/json</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Postman-Token</td>
+                        <td>  97de1bdb-985f-4a54-bf6f-63e6dbae631e</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                
+                
+                <p><h4> Response Code</h4></p>
+                <pre class="prettyprint lang-json">200</pre>
+                
+                <p><h4> Response Headers</h4></p>
+                <table class="table table-bordered table-striped">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Headers</td>
+                        <td> Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Methods</td>
+                        <td> POST, GET, OPTIONS, PUT, DELETE, PATCH</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Access-Control-Allow-Origin</td>
+                        <td> *</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Content-Type</td>
+                        <td> application/json</td>
+                    </tr>
+                    
+                </table>
+                
+                
+                <p> <H4> Response Body </H4> </p>
+                <pre class="prettyprint" id="response-body-8-0">{&#34;id&#34;:&#34;bi023l76pdi2bl28ee20&#34;,&#34;startedAtInSec&#34;:1551901140,&#34;durationInSec&#34;:1000,&#34;words&#34;:[&#34;aah&#34;],&#34;Attempts&#34;:[&#34;tanmay&#34;,&#34;aah&#34;],&#34;board&#34;:[[&#34;T&#34;,&#34;A&#34;,&#34;P&#34;,&#34;*&#34;],[&#34;E&#34;,&#34;A&#34;,&#34;K&#34;,&#34;S&#34;],[&#34;O&#34;,&#34;B&#34;,&#34;R&#34;,&#34;S&#34;],[&#34;S&#34;,&#34;*&#34;,&#34;X&#34;,&#34;D&#34;]]}</pre>
+                <script>
+                     
+                    var responseHeader ={"Access-Control-Allow-Headers":"Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization","Access-Control-Allow-Methods":"POST, GET, OPTIONS, PUT, DELETE, PATCH","Access-Control-Allow-Origin":"*","Content-Type":"application/json"};
+
+                    if (responseHeader["Content-Type"].includes("application/json")){
+                        try {
+                            var jsonStr = spaceJson("{\"id\":\"bi023l76pdi2bl28ee20\",\"startedAtInSec\":1551901140,\"durationInSec\":1000,\"words\":[\"aah\"],\"Attempts\":[\"tanmay\",\"aah\"],\"board\":[[\"T\",\"A\",\"P\",\"*\"],[\"E\",\"A\",\"K\",\"S\"],[\"O\",\"B\",\"R\",\"S\"],[\"S\",\"*\",\"X\",\"D\"]]}");
+                            document.getElementById('response-body-8-0').innerHTML = syntaxHighlight(jsonStr);
+                        } catch (e) {
+                             
+                        }
+                    }
+                </script>
+                
+                <hr>
+            
+        </div>
+        
+    </div>
+</div>
+</div>
+<hr>
+</body>
+</html>
