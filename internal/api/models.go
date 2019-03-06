@@ -16,7 +16,7 @@ type NewUserGameReq struct {
 }
 
 type OldUserGameReq struct {
-	DurationInSec int32 	`json:"duration" default:"10"`
+	DurationInSec int32 	`json:"duration" default:"60"`
 	Size int				`json:"size" default:"4"`
 }
 
