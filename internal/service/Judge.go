@@ -17,18 +17,24 @@ func (j *Judge) GetScore(game *models.Game) (score int32) {
 	score = 0
 	for w := range game.Words.Iter() {
 		word := w.(string)
-		l := len(word)
-		if l <= 4 {
-			score++
-		} else if l == 5 {
-			score += 2
-		} else if l == 6 {
-			score += 3
-		} else if l == 7 {
-			score += 5
-		} else {
-			score+=11
-		}
+		score += j.GetScoreOfWord(word)
+	}
+	return
+}
+
+func (j *Judge) GetScoreOfWord(word string) (score int32) {
+	score = 0
+	l := len(word)
+	if l <= 4 {
+		score++
+	} else if l == 5 {
+		score += 2
+	} else if l == 6 {
+		score += 3
+	} else if l == 7 {
+		score += 5
+	} else {
+		score += 11
 	}
 	return
 }

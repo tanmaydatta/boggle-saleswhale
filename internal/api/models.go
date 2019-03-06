@@ -26,6 +26,7 @@ type PlayMoveReq struct {
 
 type PlayMoveResp struct {
 	Correct bool `json:"correct"`
+	Score int32	 `json:"score"`
 }
 
 type NewUserGameResp struct {

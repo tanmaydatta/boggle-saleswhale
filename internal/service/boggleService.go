@@ -28,12 +28,12 @@ func (g *BoggleService) GetGames(ids mapset.Set) (res []*models.Game) {
 	return
 }
 
-func (g *BoggleService) CreateGame(duration int32, size int) *models.Game {
+func (g *BoggleService) CreateGame(duration int32, size int) (*models.Game, error) {
 	board := g.Bst.GetBoard(size)
 	if board == nil {
-		return nil
+		return nil, errors.New("board not found")
 	}
-	return g.Store.CreateGame(duration, board)
+	return g.Store.CreateGame(duration, board), nil
 }
 
 func (g *BoggleService) GetIdFromString(s string) (models.GameId, error) {

@@ -61,12 +61,18 @@ func validateConfig() {
 func Load() {
 	bindEnv()
 	configName := strings.ToLower(viper.GetString("env"))
+	if configName == "" {
+		configName = "local"
+	}
 	validateEnv(configName)
 	detectEnvVariablesDynamic()
 	viper.SetConfigName(configName)
 	addConfigPaths()
-	viper.SetDefault("SERVER_HOST", "localhost")
-	viper.SetDefault("SERVER_PORT", "8888")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	viper.SetDefault("SERVER_PORT", port)
 	validateConfig()
 	viper.WatchConfig()
 	viper.OnConfigChange(func(e fsnotify.Event) {

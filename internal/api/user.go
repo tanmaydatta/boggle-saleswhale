@@ -19,7 +19,11 @@ func StartGameNewUser(router *mux.Router) {
 				logrus.WithError(err)
 				return internal.BadRequest(err.Error())
 			}
-			game := boggleService.CreateGame(gameReq.DurationInSec, gameReq.Size)
+			game, err := boggleService.CreateGame(gameReq.DurationInSec, gameReq.Size)
+			if err != nil {
+				logrus.WithError(err)
+				return internal.BadRequest(err.Error())
+			}
 			user, err := userService.StartGameWithNewUser(gameReq.Name, game)
 			if err != nil {
 				logrus.WithError(err)
@@ -63,7 +67,11 @@ func StartGameOldUser(router *mux.Router) {
 				logrus.WithError(err)
 				return internal.BadRequest(err.Error())
 			}
-			game := boggleService.CreateGame(gameReq.DurationInSec, gameReq.Size)
+			game, err := boggleService.CreateGame(gameReq.DurationInSec, gameReq.Size)
+			if err != nil {
+				logrus.WithError(err)
+				return internal.BadRequest(err.Error())
+			}
 			id , err = userService.StartGameWithUser(id, game)
 			if err != nil {
 				logrus.WithError(err)
@@ -110,6 +118,7 @@ func PlayMove(router *mux.Router) {
 			if judge.IsCorrectWord(moveReq.Word) {
 				_ = userService.AddCorrectMove(id, moveReq.Word)
 				resp.Correct = true
+				resp.Score = judge.GetScoreOfWord(moveReq.Word)
 			}
 			return internal.Response{
 				Code:    http.StatusOK,
