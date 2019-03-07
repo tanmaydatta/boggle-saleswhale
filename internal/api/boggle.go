@@ -4,29 +4,20 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"github.com/tanmaydatta/boggle/internal"
+	"github.com/tanmaydatta/boggle/internal/orch"
+	"github.com/tanmaydatta/boggle/internal/validation"
 	"net/http"
 )
 
 func GetGame(router *mux.Router) {
 	router.HandleFunc("/{gameId}", internal.Make(
 		func(req *http.Request) internal.Response {
-			gameId := mux.Vars(req)["gameId"]
-			if gameId == "" {
-				logrus.Error("invalid game id")
-				return internal.BadRequest("invalid game id")
-			}
-			id, err := boggleService.GetIdFromString(gameId)
+			id, err := validation.ValidateGetGameReq(req)
 			if err != nil {
 				logrus.WithError(err)
 				return internal.BadRequest(err.Error())
 			}
-			game := boggleService.GetGame(id)
-			resp := &GameResp{}
-			resp.FromGame(game)
-			return internal.Response{
-				Code:    http.StatusOK,
-				Payload: resp,
-			}
+			return orch.OrchGetGame(id)
 		},
 	)).Methods(http.MethodGet)
 }
@@ -34,22 +25,12 @@ func GetGame(router *mux.Router) {
 func GetScore(router *mux.Router) {
 	router.HandleFunc("/{gameId}/score", internal.Make(
 		func(req *http.Request) internal.Response {
-			gameId := mux.Vars(req)["gameId"]
-			if gameId == "" {
-				logrus.Error("invalid game id")
-				return internal.BadRequest("invalid game id")
-			}
-			id, err := boggleService.GetIdFromString(gameId)
+			id, err := validation.ValidateGetScoreReq(req)
 			if err != nil {
 				logrus.WithError(err)
 				return internal.BadRequest(err.Error())
 			}
-			game := boggleService.GetGame(id)
-			resp := &ScoreResp{judge.GetScore(game)}
-			return internal.Response{
-				Code:    http.StatusOK,
-				Payload: resp,
-			}
+			return orch.OrchGetScore(id)
 		},
 	)).Methods(http.MethodGet)
 }
