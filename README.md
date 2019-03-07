@@ -17,6 +17,8 @@ Refer `apidoc.html` for examples for below mentioned apis
 * `/api/game/{gameId}` for getting info a particular game
 * `/api/game/{gameId}/score` to get the score obtained in a particular game
 
+One user can only play one game at a time 
+
 To run locally without docker, you can run `go run main.go`
 
 ### Config
